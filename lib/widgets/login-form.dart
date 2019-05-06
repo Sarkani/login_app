@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatelessWidget {
+
+  Function emailInput;
+  Function passwordInput;
+
+  LoginForm(this.emailInput, this.passwordInput);
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -32,16 +38,22 @@ class LoginForm extends StatelessWidget {
             Text("Username"),
             TextField(
               decoration: InputDecoration(
-                  hintText: "Username",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
+                hintText: "Username",
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
+              onChanged: (String value){
+                emailInput(value);
+              },
             ),
             SizedBox(height: 20.0,),
             Text("Password"),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  hintText: "Password",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
+                hintText: "Password",
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
+              onChanged: (String value){
+                passwordInput(value);
+              },
             ),
             
             Row(
